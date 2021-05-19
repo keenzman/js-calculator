@@ -10,6 +10,7 @@ let currentOp = null;
 let shouldResetScreen = false;
 
 equalsButton.addEventListener("click", evaluate);
+
 acButton.addEventListener("click", clear);
 
 numButtons.forEach((button) => {
@@ -18,14 +19,16 @@ numButtons.forEach((button) => {
   });
 });
 
-opsButtons.forEach((button) => {
-  button.addEventListener("click", () => {
-    setOps(button.textContent);
+opsButtons.forEach((opsPress) => {
+  opsPress.addEventListener("click", () => {
+    setOps(opsPress.textContent);
   });
 });
 
 function appendNum(num) {
-  if (display.textContent === "0" || shouldResetScreen) resetScreen();
+  if (display.textContent === "0" || shouldResetScreen) {
+    resetScreen();
+  }
   display.textContent += num;
 }
 
@@ -49,15 +52,14 @@ function setOps(op) {
 }
 
 function evaluate() {
-  if (currentOp === null || shouldResetScreen) return;
   if (currentOp === "÷" && display.textContent === "0") {
-    alert("To Infinity & Beyond! 🚀");
+    alert("To Infinity & Beyond! 🚀 ... Can't Divide by 0!");
     clear();
     return;
   }
   secondOp = display.textContent;
-  display.textContent = parseFloat(operate(currentOp, firstOp, secondOp));
-  currentOp = null;
+  const operation = operate(currentOp, firstOp, secondOp);
+  display.textContent = parseFloat(operation).toFixed(2);
 }
 
 function add(num1, num2) {
@@ -77,6 +79,7 @@ function divide(num1, num2) {
 }
 
 function operate(op, num1, num2) {
+  // Str concat happens without parsing first.
   num1 = parseFloat(num1);
   num2 = parseFloat(num2);
   switch (op) {
@@ -87,9 +90,8 @@ function operate(op, num1, num2) {
     case "×":
       return multiply(num1, num2);
     case "÷":
-      if (num2 === 0) return null;
-      else return divide(num1, num2);
+      return divide(num1, num2);
     default:
-      return null;
+      return;
   }
 }
