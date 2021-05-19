@@ -17,11 +17,12 @@ $main-font: "Fira Code", "Fira Mono", "Roboto Mono", monospace;
   left: 50%;
   transform: translate(-50%, -50%);
   width: 400px;
+  box-shadow: 5px 5px 6px -6px rgb(151, 151, 151);
 
   &__screen {
     font-family: $main-font;
     width: 100%;
-    font-size: 5rem;
+    font-size: 4rem;
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
     height: 80px;
@@ -55,6 +56,7 @@ $main-font: "Fira Code", "Fira Mono", "Roboto Mono", monospace;
       transparent 50%,
       rgba(235, 205, 225, 0.13)
     );
+    box-shadow: 5px 5px 6px -6px rgb(151, 151, 151);
   }
 
   .calculator__btn:hover {

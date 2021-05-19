@@ -15,12 +15,14 @@
   -webkit-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%);
   width: 400px;
+  -webkit-box-shadow: 5px 5px 6px -6px #979797;
+          box-shadow: 5px 5px 6px -6px #979797;
 }
 
 .calculator__screen {
   font-family: "Fira Code", "Fira Mono", "Roboto Mono", monospace;
   width: 100%;
-  font-size: 5rem;
+  font-size: 4rem;
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
   height: 80px;
@@ -53,6 +55,8 @@
   color: #333;
   background-image: -webkit-gradient(linear, left top, left bottom, from(transparent), color-stop(50%, transparent), to(rgba(235, 205, 225, 0.13)));
   background-image: linear-gradient(transparent, transparent 50%, rgba(235, 205, 225, 0.13));
+  -webkit-box-shadow: 5px 5px 6px -6px #979797;
+          box-shadow: 5px 5px 6px -6px #979797;
 }
 
 .calculator__buttons-container .calculator__btn:hover {
