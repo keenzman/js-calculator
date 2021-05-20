@@ -45,21 +45,12 @@ function clear() {
 }
 
 function setOps(op) {
-  if (currentOp !== null) evaluate();
+  if (currentOp !== null) {
+    evaluate();
+  }
   firstOp = display.textContent;
   currentOp = op;
   shouldResetScreen = true;
-}
-
-function evaluate() {
-  if (currentOp === "÷" && display.textContent === "0") {
-    alert("To Infinity & Beyond! 🚀 ... Can't Divide by 0!");
-    clear();
-    return;
-  }
-  secondOp = display.textContent;
-  const operation = operate(currentOp, firstOp, secondOp);
-  display.textContent = parseFloat(operation).toFixed(2);
 }
 
 function add(num1, num2) {
@@ -94,4 +85,15 @@ function operate(op, num1, num2) {
     default:
       return;
   }
+}
+
+function evaluate() {
+  if (currentOp === "÷" && display.textContent === "0") {
+    alert("To Infinity & Beyond! 🚀 ... Can't Divide by 0!");
+    clear();
+    return;
+  }
+  secondOp = display.textContent;
+  const operation = operate(currentOp, firstOp, secondOp);
+  display.textContent = parseFloat(operation).toFixed(2);
 }
