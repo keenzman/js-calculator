@@ -73,6 +73,7 @@ function operate(op, num1, num2) {
   // Str concat happens without parsing first.
   num1 = parseFloat(num1);
   num2 = parseFloat(num2);
+  // console.log(op);
   switch (op) {
     case "+":
       return add(num1, num2);
@@ -83,7 +84,7 @@ function operate(op, num1, num2) {
     case "÷":
       return divide(num1, num2);
     default:
-      return;
+      return null;
   }
 }
 
@@ -94,6 +95,8 @@ function evaluate() {
     return;
   }
   secondOp = display.textContent;
+  console.log(`This is the second op ${secondOp}`);
   const operation = operate(currentOp, firstOp, secondOp);
-  display.textContent = parseFloat(operation).toFixed(2);
+  console.log(`This is the evaluate ${operation}`);
+  display.textContent = +parseFloat(operation).toFixed(2);
 }
