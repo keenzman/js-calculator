@@ -70,10 +70,8 @@ function divide(num1, num2) {
 }
 
 function operate(op, num1, num2) {
-  // Str concat happens without parsing first.
   num1 = parseFloat(num1);
   num2 = parseFloat(num2);
-  // console.log(op);
   switch (op) {
     case "+":
       return add(num1, num2);
