@@ -11,3 +11,33 @@ describe("My first test", () => {
     cy.get(".zero").contains("0");
   });
 });
+
+describe("Addition operator", () => {
+  it("Should equal 10", () => {
+    cy.get(".five").click();
+    cy.get(".addition").click();
+    cy.get(".five").click();
+    cy.get(".equals").click();
+
+    // cy.get(".calculator__screen").contains("10");
+
+    // this works if you used <input> for display
+    // cy.get(".calculator__screen").should("have.value", 10);
+
+    // works for any tag
+    cy.get(".calculator__screen").should("contain", 10);
+  });
+});
+
+describe("Multiply operator", () => {
+  it("Should equal 15 and have one output displayed", () => {
+    cy.get(".clear").click();
+
+    cy.get(".three").click();
+    cy.get(".multiply").click();
+    cy.get(".five").click();
+    cy.get(".equals").click();
+
+    cy.get(".calculator__screen").should("contain", 15).and("have.length", 1);
+  });
+});
