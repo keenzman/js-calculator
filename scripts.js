@@ -3,6 +3,7 @@ const display = document.querySelector("[data-screen]");
 const numButtons = document.querySelectorAll("[data-num]");
 const opsButtons = document.querySelectorAll("[data-ops]");
 const equalsButton = document.querySelector("[data-equals]");
+const decimalButton = document.querySelector("[data-decimal]");
 
 let firstOp = "";
 let secondOp = "";
@@ -24,6 +25,8 @@ opsButtons.forEach((opsPress) => {
     setOps(opsPress.textContent);
   });
 });
+
+decimalButton.addEventListener("click", putDecimal);
 
 function appendNum(num) {
   if (display.textContent === "0" || shouldResetScreen) {
@@ -51,6 +54,22 @@ function setOps(op) {
   firstOp = display.textContent;
   currentOp = op;
   shouldResetScreen = true;
+}
+
+function putDecimal() {
+  if (shouldResetScreen) {
+    resetScreen();
+  }
+
+  if (display.textContent === "") {
+    screen.textContent = "0";
+  }
+
+  if (display.textContent.includes(".")) {
+    return;
+  }
+
+  display.textContent += ".";
 }
 
 function add(num1, num2) {
